@@ -22,11 +22,22 @@
 
     <!-- style sheets -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- Google analytics tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VXTB4NQ2K3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-VXTB4NQ2K3');
+    </script>
+
 </head>
 <body>
     <div class="main-content">
         <div class="container">
-            <h1>Blogbot v4 (beta)</h1>
+            <h1>Blogbot <span id="versionNumber">V4</span></h1>
             <form>
                 <div>
                     <input type="text" id="primaryKeyword" name="primaryKeyword" placeholder="primary keyword">
@@ -83,11 +94,14 @@
         </div>
         <div class="container">
             <h1>CMS Upload Checklist</h1>
-            <button id="copyChecklistButton" onclick="copyChecklist()">Copy checklist</button>
-            <button id="refreshChecklistButton" onclick="refreshChecklist()">Refresh checklist</button>
-            <button id="uploadInstructionsButton">Full upload instructions</button>
+            <button id="copyChecklistButton" onclick="copyChecklist()">Copy</button>
+            <button id="refreshChecklistButton" onclick="refreshChecklist()">Refresh</button>
+            <button id="uploadInstructionsButton">Upload instructions</button>
             <textarea id="checklist" style="width:500px; height:500px;"></textarea>
         </div>
+    </div>
+    <div id="feedbackPrompt">
+        <p>Feedback? Slack @jjuviler or use this <a href="https://forms.gle/d7oeBhL2KNVbRnJQ9" target="_blank">anonymous surey</a>. Use Blogbot V3 <a href="https://jjuviler.github.io/blogbot/">here</a>.</p>
     </div>
     <div id="issueBox">
         <div id="closeButton">X</div>

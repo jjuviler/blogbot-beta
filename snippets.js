@@ -78,6 +78,3 @@ function createFsListCode(items) {
 
   return '<p>{{ sgMacro.render_ftSnippet({ header: "' + items[0] + '", content_type: "ordered_list", list: { items : [ ' + itemsStr + ' ] }, paragraph: { content: "" } }) }}</p>';
 }
-
-
-

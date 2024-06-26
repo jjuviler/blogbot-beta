@@ -40,13 +40,14 @@ function cleanHTML(htmlString, imgDetails) {
     if ($("#checkbox-3").is(":checked")) { htmlString = convertToSmartQuotes(htmlString); }
     htmlString = removeJunkAnchors(htmlString);
     if ($("#checkbox-6").is(":checked")) { htmlString = htmlString = removeImgName(htmlString); }
-    htmlString = removeEmptyLinks(htmlString);
+    htmlString = removeEmptyLinks(htmlString);    
     if ($("#checkbox-4").is(":checked")) { htmlString = formatImages(htmlString, imgDetails); }
     if ($("#checkbox-2").is(":checked")) { htmlString = openLinksInNewTab(htmlString); }
 	htmlString = addAltText(htmlString);
     if ($("#checkbox-5").is(":checked")) { htmlString = formatImageSource(htmlString); }
     htmlString = convertHeadingLists(htmlString);
     htmlString = removeEmptyTags(htmlString);
+
     if ($("#checkbox-1").is(":checked")) { htmlString = addReadMoreTag(htmlString); }
     if ($('#addEditorsNote').is(':checked')) { htmlString = addEditorsNote(htmlString); }
 
@@ -208,8 +209,8 @@ function removeEmptyTags(htmlString) {
         elements.forEach(element => {
             // Check if the element is empty (no content or only whitespace)
             if (!element.textContent.trim() && element.children.length === 0) {
-                // Remove the element from its parent
-                element.parentNode.removeChild(element);
+                // Replace the element with its inner content (which is empty)
+                element.replaceWith(document.createTextNode(element.innerHTML));
             }
         });
     });
@@ -862,24 +863,3 @@ function checkLinkWhitespace(htmlString) {
 
     return matchFound;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

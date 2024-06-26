@@ -1,8 +1,10 @@
-const tocItems = [];
+var tocItems = [];
 
 function tableOfContents(htmlString) {
+  tocItems = [];
   htmlString = addAnchorsFeaturedSnippets(htmlString);
   htmlString = addAnchorsH2s(htmlString);
+  reorderTocItems(htmlString);
   htmlString = addTOC(htmlString);
   return htmlString;
 }
@@ -89,6 +91,23 @@ function addAnchorsH2s(htmlString) {
   return doc.body.innerHTML;
 }
 
+function reorderTocItems(htmlString) {
+  // Create a map to store the index of each id in the htmlString
+  const indexMap = {};
+
+  tocItems.forEach(item => {
+    const index = htmlString.indexOf(item.id);
+    if (index !== -1) {
+      indexMap[item.id] = index;
+    }
+  });
+
+  // Sort tocItems based on the index in the htmlString
+  tocItems.sort((a, b) => {
+    return (indexMap[a.id] || Infinity) - (indexMap[b.id] || Infinity);
+  });
+}
+
 function addTOC(htmlString) {
   const parser = new DOMParser();
   const doc = parser.parseFromString(htmlString, 'text/html');
@@ -121,5 +140,3 @@ function addTOC(htmlString) {
 
   return div.innerHTML;
 }
-
-

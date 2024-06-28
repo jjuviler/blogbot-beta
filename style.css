@@ -6,11 +6,19 @@
     padding: 5px; /* Space from edges and top */
 }
 
+.column {
+    flex: 1; /* Each column takes up equal width */
+}
+
 .container {
     background-color: #fff8f2;
+    border: solid 0.5px black;
     border-radius: 8px;
-    flex: 1; /* Each column takes up equal width */
     padding: 20px;
+}
+
+#instructions li {
+    font-size: 0.9rem;
 }
 
 body {
